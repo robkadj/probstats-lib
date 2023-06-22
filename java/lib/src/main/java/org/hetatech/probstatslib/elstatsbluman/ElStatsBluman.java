@@ -22,17 +22,12 @@ public class ElStatsBluman {
     }
 
     public double mean(DoubleFrequencyClass[] arr) {
-        record WithMidpoint(DoubleFrequencyClass clazz, double midpoint, double freqWithMidpoint) {}
-        WithMidpoint[] rcd = new WithMidpoint[arr.length];
-        int i = 0;
         long fSum = 0;
         double freqWithMidpointSum = 0;
         for(DoubleFrequencyClass v : arr) {
             fSum += v.f();
             double midpoint = midpoint(v.doubleClass().start(), v.doubleClass().end());
-            WithMidpoint wm = new WithMidpoint(v, midpoint, midpoint*v.f());
-            rcd[i++] = wm;
-            freqWithMidpointSum += wm.freqWithMidpoint();
+            freqWithMidpointSum += midpoint*v.f();
         }
         return freqWithMidpointSum / fSum;
     }

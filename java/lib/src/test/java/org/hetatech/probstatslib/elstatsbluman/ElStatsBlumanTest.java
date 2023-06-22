@@ -5,7 +5,6 @@ import org.hetatech.probstatslib.dm.DoubleFrequencyClass;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ElStatsBlumanTest {
 
@@ -65,5 +64,44 @@ public class ElStatsBlumanTest {
         arr[5] = new DoubleFrequencyClass(new DoubleClass(30.5, 35.5), 3);
         arr[6] = new DoubleFrequencyClass(new DoubleClass(35.5, 40.5), 2);
         assertEquals(24.5, testedClass.mean(arr));
+    }
+
+    @Test public void testMeanArr_from_book_page111_ex15() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        DoubleFrequencyClass[] arr = new DoubleFrequencyClass[9];
+        arr[0] = new DoubleFrequencyClass(new DoubleClass(34, 96), 13);
+        arr[1] = new DoubleFrequencyClass(new DoubleClass(97, 159), 2);
+        arr[2] = new DoubleFrequencyClass(new DoubleClass(160, 222), 0);
+        arr[3] = new DoubleFrequencyClass(new DoubleClass(223, 285), 5);
+        arr[4] = new DoubleFrequencyClass(new DoubleClass(286, 348), 1);
+        arr[5] = new DoubleFrequencyClass(new DoubleClass(349, 411), 1);
+        arr[6] = new DoubleFrequencyClass(new DoubleClass(412, 474), 0);
+        arr[7] = new DoubleFrequencyClass(new DoubleClass(475, 537), 1);
+        arr[8] = new DoubleFrequencyClass(new DoubleClass(538, 600), 2);
+        assertEquals(188.48, testedClass.mean(arr));
+    }
+
+    @Test public void testMeanArr_from_book_page111_ex13() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        DoubleFrequencyClass[] arr = new DoubleFrequencyClass[6];
+        arr[0] = new DoubleFrequencyClass(new DoubleClass(202, 204), 2);
+        arr[1] = new DoubleFrequencyClass(new DoubleClass(205, 207), 7);
+        arr[2] = new DoubleFrequencyClass(new DoubleClass(208, 210), 16);
+        arr[3] = new DoubleFrequencyClass(new DoubleClass(211, 213), 26);
+        arr[4] = new DoubleFrequencyClass(new DoubleClass(214, 216), 18);
+        arr[5] = new DoubleFrequencyClass(new DoubleClass(217, 219), 4);
+        assertEquals(212, Math.round(testedClass.mean(arr)));
+    }
+
+    @Test public void testMeanArr_from_book_page112_ex21() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        DoubleFrequencyClass[] arr = new DoubleFrequencyClass[6];
+        arr[0] = new DoubleFrequencyClass(new DoubleClass(15.5, 18.5), 14);
+        arr[1] = new DoubleFrequencyClass(new DoubleClass(18.5, 21.5), 7);
+        arr[2] = new DoubleFrequencyClass(new DoubleClass(21.5, 24.5), 16);
+        arr[3] = new DoubleFrequencyClass(new DoubleClass(24.5, 27.5), 26);
+        arr[4] = new DoubleFrequencyClass(new DoubleClass(27.5, 30.5), 18);
+        arr[5] = new DoubleFrequencyClass(new DoubleClass(30.5, 33.5), 4);
+        assertEquals(24, Math.round(testedClass.mean(arr)));
     }
 }
