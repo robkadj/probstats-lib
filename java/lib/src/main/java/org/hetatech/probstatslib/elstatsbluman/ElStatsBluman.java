@@ -2,6 +2,8 @@ package org.hetatech.probstatslib.elstatsbluman;
 
 import org.hetatech.probstatslib.dm.DoubleFrequencyClass;
 
+import java.util.Arrays;
+
 public class ElStatsBluman {
 
 
@@ -30,5 +32,23 @@ public class ElStatsBluman {
             freqWithMidpointSum += midpoint*v.f();
         }
         return freqWithMidpointSum / fSum;
+    }
+
+    public double populationVariance(double[] arr) {
+        double s = 0;
+        for(double v : arr) {
+            s += v;
+        }
+        double mean = s/arr.length;
+
+        double sum = 0;
+        for(double v : arr) {
+            sum += Math.pow((v - mean), 2);
+        }
+        return sum/arr.length;
+    }
+
+    public double populationStandardDeviation(double[] arr) {
+        return Math.sqrt(populationVariance(arr));
     }
 }

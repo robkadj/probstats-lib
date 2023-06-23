@@ -104,4 +104,16 @@ public class ElStatsBlumanTest {
         arr[5] = new DoubleFrequencyClass(new DoubleClass(30.5, 33.5), 4);
         assertEquals(24, Math.round(testedClass.mean(arr)));
     }
+
+    @Test public void testPopulationVariance_from_book_page119_Example3_22() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        double variance = testedClass.populationVariance(new double[] {35, 45, 30, 35, 40, 25});
+        assertEquals(42, Math.round(variance));
+    }
+
+    @Test public void testPopulationStandardDeviation_from_book_page119_Example3_22() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        double variance = testedClass.populationStandardDeviation(new double[] {35, 45, 30, 35, 40, 25});
+        assertEquals(6, Math.round(variance));
+    }
 }
