@@ -51,4 +51,22 @@ public class ElStatsBluman {
     public double populationStandardDeviation(double[] arr) {
         return Math.sqrt(populationVariance(arr));
     }
+
+    public double sampleVariance(double[] arr) {
+        double s = 0;
+        for(double v : arr) {
+            s += v;
+        }
+        double mean = s/arr.length;
+
+        double sum = 0;
+        for(double v : arr) {
+            sum += Math.pow((v - mean), 2);
+        }
+        return sum/(arr.length - 1);
+    }
+
+    public double sampleStandardDeviation(double[] arr) {
+        return Math.sqrt(sampleVariance(arr));
+    }
 }

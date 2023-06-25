@@ -113,7 +113,19 @@ public class ElStatsBlumanTest {
 
     @Test public void testPopulationStandardDeviation_from_book_page119_Example3_22() {
         ElStatsBluman testedClass = new ElStatsBluman();
-        double variance = testedClass.populationStandardDeviation(new double[] {35, 45, 30, 35, 40, 25});
-        assertEquals(6, Math.round(variance));
+        double sd = testedClass.populationStandardDeviation(new double[] {35, 45, 30, 35, 40, 25});
+        assertEquals(6, Math.round(sd));
+    }
+
+    @Test public void testSampleVariance_from_book_page121_Example3_23() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        double variance = testedClass.sampleVariance(new double[] {11.2, 11.9, 12.0, 12.8, 13.4, 14.3});
+        assertEquals(1.276000000000001, variance);
+    }
+
+    @Test public void testSampleStandardDeviation_from_book_page121_Example2_23() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        double sd = testedClass.sampleStandardDeviation(new double[] {11.2, 11.9, 12.0, 12.8, 13.4, 14.3});
+        assertEquals(1.1296016997154354, sd);
     }
 }
