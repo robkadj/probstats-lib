@@ -128,4 +128,28 @@ public class ElStatsBlumanTest {
         double sd = testedClass.sampleStandardDeviation(new double[] {11.2, 11.9, 12.0, 12.8, 13.4, 14.3});
         assertEquals(1.1296016997154354, sd);
     }
+
+    private DoubleFrequencyClass[] generateDataForExample3_24() {
+        DoubleFrequencyClass[] arr = new DoubleFrequencyClass[7];
+        arr[0] = new DoubleFrequencyClass(new DoubleClass(5.5, 10.5), 1);
+        arr[1] = new DoubleFrequencyClass(new DoubleClass(10.5, 15.5), 2);
+        arr[2] = new DoubleFrequencyClass(new DoubleClass(15.5, 20.5), 3);
+        arr[3] = new DoubleFrequencyClass(new DoubleClass(20.5, 25.5), 5);
+        arr[4] = new DoubleFrequencyClass(new DoubleClass(25.5, 30.5), 4);
+        arr[5] = new DoubleFrequencyClass(new DoubleClass(30.5, 35.5), 3);
+        arr[6] = new DoubleFrequencyClass(new DoubleClass(35.5, 40.5), 2);
+        return arr;
+    }
+
+    @Test public void testSampleGroupedDataVariance_from_book_page121_Example3_24() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        DoubleFrequencyClass[] arr = generateDataForExample3_24();
+        assertEquals(68.6842105263158, testedClass.sampleGroupedDataVariance(arr));
+    }
+
+    @Test public void testSampleGroupedDataStandardDeviation_from_book_page121_Example3_24() {
+        ElStatsBluman testedClass = new ElStatsBluman();
+        DoubleFrequencyClass[] arr = generateDataForExample3_24();
+        assertEquals(8.287593771796239, testedClass.sampleGroupedDataStandardDeviation(arr));
+    }
 }

@@ -2,8 +2,6 @@ package org.hetatech.probstatslib.elstatsbluman;
 
 import org.hetatech.probstatslib.dm.DoubleFrequencyClass;
 
-import java.util.Arrays;
-
 public class ElStatsBluman {
 
 
@@ -68,5 +66,37 @@ public class ElStatsBluman {
 
     public double sampleStandardDeviation(double[] arr) {
         return Math.sqrt(sampleVariance(arr));
+    }
+
+    /**
+     * Implementation of variance for grouped data as described on page 121. The formula has been implemented as shown
+     * on page 122, Step 5
+     * @param arr the array with input data
+     * @return the variance of grouped data
+     */
+    public double sampleGroupedDataVariance(DoubleFrequencyClass[] arr) {
+        double sumFreMidpointSq = 0;
+        for (DoubleFrequencyClass v : arr) {
+            sumFreMidpointSq += v.f() * Math.pow(midpoint(v.doubleClass().start(), v.doubleClass().end()), 2);
+        }
+        double sumFreqMidPoint = 0;
+        for (DoubleFrequencyClass v : arr) {
+            sumFreqMidPoint += v.f() * midpoint(v.doubleClass().start(), v.doubleClass().end());
+        }
+        long n = 0;
+        for (DoubleFrequencyClass v : arr) {
+            n += v.f();
+        }
+        return (sumFreMidpointSq - Math.pow(sumFreqMidPoint, 2) / n) / ( n - 1 );
+    }
+
+    /**
+     * Implementation of standard deviation for grouped data as described on page 121.
+     * The formula has been implemented as shown on page 122, Step 6
+     * @param arr the array with input data
+     * @return standard deviation of grouped data
+     */
+    public double sampleGroupedDataStandardDeviation(DoubleFrequencyClass[] arr) {
+        return Math.sqrt(sampleGroupedDataVariance(arr));
     }
 }
